@@ -1,13 +1,17 @@
+# Login from databse using "deta.space" 
 import streamlit as st
+import os
+from dotenv import load_dotenv
+import json
 import database as dba
 import streamlit_authenticator as stauth
 import firebase_admin
-from firebase_admin import credentials
+from firebase_admin import credentials, initialize_app
 from firebase_admin import db
 from firebase_admin import storage
 from datetime import datetime, timedelta
 from metadata import COLLEGES
-from cachetools import cached, TTLCache
+from cachetools import TTLCache
 import hashlib
 
 
@@ -35,13 +39,24 @@ if authentication_status:
     # Create a cache with a TTL (time-to-live) of 5 minutes
     cache = TTLCache(maxsize=100, ttl=300)
 
-    # Initialize Firebase Admin SDK only once
-    if not firebase_admin._apps:
-        cred = credentials.Certificate("C:\\Users\\abdir\\OneDrive\\Desktop\\Web Dev\\New Stramlit App\\New_Auth\\streamlit-v2-firebase-adminsdk-vrbcn-11aff9b667.json")
-        firebase_admin.initialize_app(cred, {
-            'databaseURL': 'https://streamlit-v2-default-rtdb.europe-west1.firebasedatabase.app',
-            'storageBucket': 'streamlit-v2.appspot.com'
-        })
+    try:
+        load_dotenv(".env")
+        firebase_admin_credentials = os.getenv("FIREBASE_ADMIN_CREDENTIALS")
+        with open('FIREBASE_ADMIN_CREDENTIALS', 'w') as file:
+            file.write(firebase_admin_credentials)
+        if not firebase_admin._apps:
+            cred = credentials.Certificate(firebase_admin_credentials)
+            firebase_admin.initialize_app(cred, {
+                'databaseURL': 'https://streamlit-v2-default-rtdb.europe-west1.firebasedatabase.app',
+                'storageBucket': 'streamlit-v2.appspot.com'
+            })
+    except FileNotFoundError:
+        st.error("Firebase credentials file not found.")
+    except json.JSONDecodeError as e:
+        st.error("Error parsing JSON: " + str(e))
+    finally:
+        if os.path.exists('FIREBASE_ADMIN_CREDENTIALS'):
+            os.remove('FIREBASE_ADMIN_CREDENTIALS')
 
     def generate_custom_id(user, metadata):
         # Concatenate relevant metadata fields
