@@ -110,7 +110,8 @@ The **Delete Files** function allows users to remove files from the library base
 5. Click on the **Delete** button to delete the selected files from the library.
 
 Please note that deleting files is a permanent action and cannot be undone. Exercise caution when deleting files from the library.
-
+> **Warning**
+> This is a warning
 
 ## Documentation
 
