@@ -46,7 +46,7 @@ if authentication_status:
             with open('firebase_credentials.json', 'w') as file:
                 file.write(firebase_admin_credentials)
             cred = credentials.Certificate('firebase_credentials.json')
-            initialize_app(cred, {
+            firebase_admin.initialize_app(cred, {
                 'databaseURL': 'https://streamlit-v2-default-rtdb.europe-west1.firebasedatabase.app',
                 'storageBucket': 'streamlit-v2.appspot.com'
             })
