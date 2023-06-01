@@ -34,7 +34,7 @@ University Files And Documents Library is a Streamlit web application that allow
 
 4. Set up Firebase and Deta:
 
-    * Create a Firebase project and enable the Realtime Database and Cloud Storage services. Obtain the Firebase Admin SDK credentials file (streamlit-v2-firebase-adminsdk-vrbcn-11aff9b667.json) and save it in the project directory.
+    * Create a Firebase project and enable the Realtime Database and Cloud Storage services. Obtain the Firebase Admin SDK credentials file ("path/to/serviceAccountKey.json") and save it in the project directory.
 
    * Sign up for a Deta account and create a new Base. Obtain your Deta API key (DETA_KEY) and update the database.py file with your key.
 
@@ -63,9 +63,14 @@ The application will be running locally at http://localhost:8501.
 
 1. Open the web browser and navigate to http://localhost:8501.
 
-2. Login with your username and password.
+2. Login
+- Enter your username and password to log in. If the credentials are correct, you will be redirected to the main page. Otherwise, an error message will be displayed.
 
-3. The main page will be displayed with the available options:
+3. Main Page
+- The main page displays a sidebar with a welcome message and options to select different pages: "Upload Files", "Browse Documents", and "Delete Files".
+- The selected page is displayed in the main area.
+
+The main page will be displayed with the available options:
 
 ### Upload Files:
 
@@ -109,9 +114,9 @@ The **Delete Files** function allows users to remove files from the library base
 
 5. Click on the **Delete** button to delete the selected files from the library.
 
-Please note that deleting files is a permanent action and cannot be undone. Exercise caution when deleting files from the library.
 > **Warning**
-> This is a warning
+Please note that deleting files is a permanent action and cannot be undone. Exercise caution when deleting files from the library.
+
 
 ## Documentation
 
