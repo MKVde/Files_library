@@ -4,4 +4,4 @@ firebase_admin==6.1.0
 python-dotenv
 streamlit==1.22.0
 streamlit_authenticator==0.1.5
-tempfile
+
