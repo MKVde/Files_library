@@ -12,7 +12,7 @@ from datetime import datetime, timedelta
 from metadata import COLLEGES
 from cachetools import TTLCache
 import hashlib
-
+import tempfile
 
 # --- USER AUTHENTICATION ---
 
@@ -37,12 +37,16 @@ if authentication_status == None:
 if authentication_status:
     # Create a cache with a TTL (time-to-live) of 5 minutes
     cache = TTLCache(maxsize=100, ttl=300)
-
+    
     # Initialize Firebase Admin SDK only once
     load_dotenv(".env")
     firebase_admin_credentials = os.getenv("FIREBASE_ADMIN_CREDENTIALS")
+    # Create a temporary file
+    temp_file = tempfile.NamedTemporaryFile(delete=False)
+    temp_file.write(firebase_admin_credentials.encode())
+    temp_file.close()
     if not firebase_admin._apps:
-        cred = credentials.Certificate(firebase_admin_credentials)
+        cred = credentials.Certificate(temp_file.name)
         initialize_app(cred, {
             'databaseURL': 'https://streamlit-v2-default-rtdb.europe-west1.firebasedatabase.app',
             'storageBucket': 'streamlit-v2.appspot.com'
@@ -355,7 +359,7 @@ if authentication_status:
 
     # Run the app
     main()
-
+    os.remove(temp_file.name)
 
 # Another version with ROles Student and Admin versions
 
