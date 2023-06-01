@@ -42,10 +42,10 @@ if authentication_status:
     try:
         load_dotenv(".env")
         firebase_admin_credentials = os.getenv("FIREBASE_ADMIN_CREDENTIALS")
-        with open('FIREBASE_ADMIN_CREDENTIALS', 'w') as file:
+        with open('firebase_admin_credentials.json', 'w') as file:
             file.write(firebase_admin_credentials)
         if not firebase_admin._apps:
-            cred = credentials.Certificate(firebase_admin_credentials)
+            cred = credentials.Certificate('firebase_admin_credentials.json')
             firebase_admin.initialize_app(cred, {
                 'databaseURL': 'https://streamlit-v2-default-rtdb.europe-west1.firebasedatabase.app',
                 'storageBucket': 'streamlit-v2.appspot.com'
@@ -55,8 +55,8 @@ if authentication_status:
     except json.JSONDecodeError as e:
         st.error("Error parsing JSON: " + str(e))
     finally:
-        if os.path.exists('FIREBASE_ADMIN_CREDENTIALS'):
-            os.remove('FIREBASE_ADMIN_CREDENTIALS')
+        if os.path.exists('firebase_admin_credentials.json'):
+            os.remove('firebase_admin_credentials.json')
 
     def generate_custom_id(user, metadata):
         # Concatenate relevant metadata fields
