@@ -42,7 +42,7 @@ if authentication_status:
     load_dotenv(".env")
     firebase_admin_credentials = os.getenv("FIREBASE_ADMIN_CREDENTIALS")
     if not firebase_admin._apps:
-        cred = credentials.Certificate(json.loads(firebase_admin_credentials))
+        cred = credentials.Certificate(firebase_admin_credentials)
         initialize_app(cred, {
             'databaseURL': 'https://streamlit-v2-default-rtdb.europe-west1.firebasedatabase.app',
             'storageBucket': 'streamlit-v2.appspot.com'
