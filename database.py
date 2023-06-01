@@ -5,7 +5,8 @@ from dotenv import load_dotenv  # pip install python-dotenv
 
 
 # Load the environment variables
-DETA_KEY = "d0emjff4kfz_yQjGKPkfZTp9S836Jjb9RK7WCD8z8LUP"
+load_dotenv(".env")
+DETA_KEY = os.getenv("DETA_KEY")
 
 deta = Deta(DETA_KEY)
 
