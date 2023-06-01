@@ -1,17 +1,13 @@
-# Login from databse using "deta.space" 
 import streamlit as st
-import os
-from dotenv import load_dotenv
-import json
 import database as dba
 import streamlit_authenticator as stauth
 import firebase_admin
-from firebase_admin import credentials, initialize_app
+from firebase_admin import credentials
 from firebase_admin import db
 from firebase_admin import storage
 from datetime import datetime, timedelta
 from metadata import COLLEGES
-from cachetools import TTLCache
+from cachetools import cached, TTLCache
 import hashlib
 
 
@@ -39,24 +35,13 @@ if authentication_status:
     # Create a cache with a TTL (time-to-live) of 5 minutes
     cache = TTLCache(maxsize=100, ttl=300)
 
-    try:
-        load_dotenv(".env")
-        firebase_admin_credentials = os.getenv("FIREBASE_ADMIN_CREDENTIALS")
-        if not firebase_admin._apps:
-            with open('firebase_credentials.json', 'w') as file:
-                file.write(firebase_admin_credentials)
-            cred = credentials.Certificate('firebase_credentials.json')
-            firebase_admin.initialize_app(cred, {
-                'databaseURL': 'https://streamlit-v2-default-rtdb.europe-west1.firebasedatabase.app',
-                'storageBucket': 'streamlit-v2.appspot.com'
-            })
-    except FileNotFoundError:
-        print("Firebase credentials file not found.")
-    except json.JSONDecodeError as e:
-        print("Error parsing JSON:", e)
-    finally:
-        if os.path.exists('firebase_credentials.json'):
-            os.remove('firebase_credentials.json')
+    # Initialize Firebase Admin SDK only once
+    if not firebase_admin._apps:
+        cred = credentials.Certificate("C:\\Users\\abdir\\OneDrive\\Desktop\\Web Dev\\New Stramlit App\\New_Auth\\streamlit-v2-firebase-adminsdk-vrbcn-11aff9b667.json")
+        firebase_admin.initialize_app(cred, {
+            'databaseURL': 'https://streamlit-v2-default-rtdb.europe-west1.firebasedatabase.app',
+            'storageBucket': 'streamlit-v2.appspot.com'
+        })
 
     def generate_custom_id(user, metadata):
         # Concatenate relevant metadata fields
@@ -365,8 +350,3 @@ if authentication_status:
 
     # Run the app
     main()
-
-
-# Another version with ROles Student and Admin versions
-
-
