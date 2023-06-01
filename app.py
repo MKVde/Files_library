@@ -2,7 +2,6 @@
 import streamlit as st
 import os
 from dotenv import load_dotenv
-import json
 import database as dba
 import streamlit_authenticator as stauth
 import firebase_admin
