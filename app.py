@@ -39,15 +39,19 @@ if authentication_status:
     # Create a cache with a TTL (time-to-live) of 5 minutes
     cache = TTLCache(maxsize=100, ttl=300)
 
-    # Initialize Firebase Admin SDK only once
-    load_dotenv(".env")
-    firebase_admin_credentials = os.getenv("FIREBASE_ADMIN_CREDENTIALS")
-    if not firebase_admin._apps:
-        cred = credentials.Certificate(json.loads(firebase_admin_credentials))
-        initialize_app(cred, {
-            'databaseURL': 'https://streamlit-v2-default-rtdb.europe-west1.firebasedatabase.app',
-            'storageBucket': 'streamlit-v2.appspot.com'
-        })
+    try:
+        load_dotenv(".env")
+        firebase_admin_credentials = os.getenv("FIREBASE_ADMIN_CREDENTIALS")
+        if not firebase_admin._apps:
+            cred = credentials.Certificate(json.loads(firebase_admin_credentials))
+            initialize_app(cred, {
+                'databaseURL': 'https://streamlit-v2-default-rtdb.europe-west1.firebasedatabase.app',
+                'storageBucket': 'streamlit-v2.appspot.com'
+            })
+    except FileNotFoundError:
+        print("Firebase credentials file not found.")
+    except json.JSONDecodeError as e:
+        print("Error parsing JSON:", e)
 
     def generate_custom_id(user, metadata):
         # Concatenate relevant metadata fields
