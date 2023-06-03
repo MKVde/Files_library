@@ -192,6 +192,14 @@ if authentication_status:
 
     # Streamlit app UI
     def main():
+        hide_st_style = """
+        <style>
+        #MainMenu {visibility: hidden; }
+        footer {visibility: hidden; }
+        footer {visibility: hidden; }
+        </style>
+        """
+        st.markdown(hide_st_style, unsafe_allow_html=True)
         st.title("University Files Documents Library")
 
         st.sidebar.title(f"🏁 Welcome {name}")
