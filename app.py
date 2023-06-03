@@ -29,6 +29,14 @@ authenticator = stauth.Authenticate(names, usernames, hashed_passwords, "univers
 
 name, authentication_status, username = authenticator.login("Login", "main")
 
+hide_st_style = """
+<style>
+#MainMenu { visibility: hidden; }
+footer { visibility: hidden; }
+.login-page .css-14xtw13.e8zbici0 { display: none; }
+</style>
+"""
+
 if authentication_status == False:
     st.error("Username/password is incorrect")
 
@@ -36,6 +44,7 @@ if authentication_status == None:
     st.warning("Please enter your username and password")
 
 if authentication_status:
+    st.markdown(hide_st_style, unsafe_allow_html=True)
     # Create a cache with a TTL (time-to-live) of 5 minutes
     cache = TTLCache(maxsize=100, ttl=300)
 
@@ -197,6 +206,7 @@ if authentication_status:
         #MainMenu {visibility: hidden; }
         footer {visibility: hidden; }
         footer {visibility: hidden; }
+        .viewerBadge_link__1S137
         .css-14xtw13.e8zbici0 { display: none; }
         </style>
         """
