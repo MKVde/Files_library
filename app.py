@@ -197,6 +197,7 @@ if authentication_status:
         #MainMenu {visibility: hidden; }
         footer {visibility: hidden; }
         footer {visibility: hidden; }
+        .css-14xtw13.e8zbici0 { display: none; }
         </style>
         """
         st.markdown(hide_st_style, unsafe_allow_html=True)
