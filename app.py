@@ -34,6 +34,7 @@ hide_st_style = """
 #MainMenu { visibility: hidden; }
 footer { visibility: hidden; }
 .login-page .css-14xtw13.e8zbici0 { display: none; }
+a.viewerBadge_container__1QSob.styles_viewerBadge__1yB5_ { display: none; }
 </style>
 """
 st.markdown(hide_st_style, unsafe_allow_html=True)
@@ -208,6 +209,7 @@ if authentication_status:
         footer {visibility: hidden; }
         .viewerBadge_link__1S137
         .css-14xtw13.e8zbici0 { display: none; }
+        a.viewerBadge_container__1QSob.styles_viewerBadge__1yB5_ { display: none; }
         </style>
         """
         st.markdown(hide_st_style, unsafe_allow_html=True)
