@@ -35,6 +35,7 @@ hide_st_style = """
 footer { visibility: hidden; }
 .login-page .css-14xtw13.e8zbici0 { display: none; }
 a.viewerBadge_container__1QSob.styles_viewerBadge__1yB5_ { display: none; }
+.viewerBadge_link__1S137
 </style>
 """
 st.markdown(hide_st_style, unsafe_allow_html=True)
