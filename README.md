@@ -12,7 +12,6 @@ University Files And Documents Library is a Streamlit web application that allow
 
 ```bash
   git clone https://github.com/your-username/university-files-library.git
-
 ```
     
 2. Navigate to the project directory:
@@ -21,7 +20,6 @@ University Files And Documents Library is a Streamlit web application that allow
 
 ```bash
     cd university-files-library
-
 ```
 
 3. cd university-files-library
@@ -29,7 +27,6 @@ University Files And Documents Library is a Streamlit web application that allow
 
 ```bash
     pip install -r requirements.txt
-
 ```
 
 4. Set up Firebase and Deta:
@@ -44,7 +41,6 @@ University Files And Documents Library is a Streamlit web application that allow
 
 ```bash
     streamlit run app.py
-
 ```
 
 The application will be running locally at http://localhost:8501.
