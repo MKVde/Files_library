@@ -1,7 +1,7 @@
 
-# University Files And Documents Library
+# Files And Documents Library
 
-University Files And Documents Library is a Streamlit web application that allows users to upload, browse, and delete files in a university documents library. The application utilizes Firebase Realtime Database for storing file metadata and Firebase Cloud Storage [**console.firebase.google**](https://console.firebase.google.com/)  for storing the actual files. It also uses Deta from [**deta.space**](https://deta.space/) database for user authentication.
+Files And Documents Library is a Streamlit web application that allows users to upload, browse, and delete files in a documents library. The application utilizes Firebase Realtime Database for storing file metadata and Firebase Cloud Storage [**console.firebase.google**](https://console.firebase.google.com/)  for storing the actual files. It also uses Deta from [**deta.space**](https://deta.space/) database for user authentication.
 
 
 
@@ -11,7 +11,7 @@ University Files And Documents Library is a Streamlit web application that allow
 
 
 ```bash
-  git clone https://github.com/your-username/university-files-library.git
+  git clone https://github.com/MKVde/Files_library.git
 ```
     
 2. Navigate to the project directory:
@@ -19,10 +19,10 @@ University Files And Documents Library is a Streamlit web application that allow
 
 
 ```bash
-    cd university-files-library
+    cd Files_library
 ```
 
-3. cd university-files-library
+3. cd Files-library
 
 
 ```bash
