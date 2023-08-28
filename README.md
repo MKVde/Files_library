@@ -22,7 +22,7 @@ Files And Documents Library is a Streamlit web application that allows users to 
     cd Files_library
 ```
 
-3. cd Files-library
+3. Install requirements
 
 
 ```bash
