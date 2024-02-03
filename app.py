@@ -302,7 +302,7 @@ if authentication_status:
 
                 # Display search results
                 if files:
-                    st.subheader("Search Results")
+                    st.subheader("Search Resultss")
                     for file_id, file_data in files.items():
                         st.write(f"File Name: {file_data['fileName']}")
                         # Add a download hyperlink for each file
